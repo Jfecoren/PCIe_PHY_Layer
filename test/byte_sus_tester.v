@@ -50,13 +50,15 @@ module TESTER_UNSTRIPING(lane_0, lane_1, valid_0, valid_1, data_out, valid_out, 
 		{valid_0, valid_1} = 2'b11;
 		
 		#3
-		repeat (8)
+		repeat (4)
 			begin
-				@(posedge clk_f)
+				@(posedge clk_2f)
 					lane_0 <= 32'hFFFF_FFFF;
+				@(posedge clk_2f)
 					lane_1 <= 32'hEEEE_EEEE;
-				@(posedge clk_f)
+				@(posedge clk_2f)
 					lane_0 <= 32'hDDDD_DDDD;
+				@(posedge clk_2f)
 					lane_1 <= 32'hCCCC_CCCC;
 			end
 	end
