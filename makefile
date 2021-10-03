@@ -1,8 +1,8 @@
 SRC_DIR := src
 BIN_DIR := .
 TST_DIR := test
-INC_DIR := include
-VFLAGS := -I $(TST_DIR) -I $(INC_DIR)
+LIB_DIR := lib
+VFLAGS := -I $(TST_DIR) -I $(LIB_DIR)
 
 CC=iverilog
 
