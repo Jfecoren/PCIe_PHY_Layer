@@ -2,7 +2,7 @@
 
 // Testbench modules for Byte Striping & Un-striping
 `include "byte_sus_tester.v"
-`include "../src/byte_sus.v"
+`include "byte_sus.v"
 
 module TESTBENCH_STRIPING;
 	wire [31:0] lane_0, lane_1;

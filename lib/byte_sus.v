@@ -19,12 +19,23 @@ module BYTE_STRIPING(lane_0, lane_1, valid_0, valid_1, data_in, valid_in, clk_2f
 						lane_0 <= data_in;
 						valid_0 <= valid_in;
 					end
+				else
+					begin
+						lane_0 <= 'b0;
+						valid_0 <= valid_in;
+					end
+					
 			
 			@(posedge clk_2f)
 				#0.5
 				if(valid_in == 1)
 					begin
 						lane_1 <= data_in;
+						valid_1 <= valid_in;
+					end
+				else
+					begin
+						lane_1 <= 'b0;
 						valid_1 <= valid_in;
 					end
 		end
