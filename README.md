@@ -4,5 +4,5 @@ PHY Layer for a PCIe Interface. College proyect.
 ## Circuitos Digitales II
 ### Integrantes
 Luis...
-Luis Ocampo Gomez
+Luis D. Ocampo Gomez
 Juan Felipe Cortes Renteria
