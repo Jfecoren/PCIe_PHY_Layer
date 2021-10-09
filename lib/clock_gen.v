@@ -1,3 +1,10 @@
+/* PHY Layer for PCIe Interface
+ * clk_gen module
+ * Created: September 30, 2021
+ *
+ */
+// clk generator
+
 module clk_gen(
     output reg clk_f,
     output reg clk_2f,
