@@ -1,6 +1,6 @@
 `timescale 	1s	/ 1s
 `include "clk_gen.v"
-`include "probador.v"
+`include "clk_gen_tester.v"
 
 
 module BancoPruebas;

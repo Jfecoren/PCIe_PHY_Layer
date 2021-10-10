@@ -1,8 +1,7 @@
 `timescale 1ms/100ps
 
-`include "32-8b_tester.v"
-`include "32-8b.v"
-`include "32-8b_tester.v"
+`include "32_8b.v"
+`include "32_8b_tester.v"
 `include "cmos_cells.v"
 
 module 32_8b_testbench; 
