@@ -1,3 +1,4 @@
 # ignore verilog output files
 *.o
 *.vcd
+*.gtkw
