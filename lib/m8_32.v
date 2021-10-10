@@ -1,21 +1,18 @@
-
 /* PHY Layer for PCIe Interface
  * 32-8b & 8-32b modules
  * Created: October 3, 2021
  *
  */
 // 32-8b/8-32b modules
-module m8_32(input clk_4f,
+module m8_32(output reg [31:0] data_8_32,
+				output reg valid_8_32,
 				input [7:0] data_input,
 				input valid_input,
 				input reset,
-				output reg [31:0] data_8_32,
-				output reg valid_8_32); 
+				input clk_4f); 
 
 	reg [31:0] buffer;
 	integer contador;
-
-
 	always @(posedge clk_4f) begin
 		if(reset == 0) begin
 			contador <= 0;
