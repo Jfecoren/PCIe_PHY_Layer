@@ -7,7 +7,10 @@ VFLAGS := -I $(TST_DIR) -I $(LIB_DIR) -I $(INC_DIR)
 
 CC=iverilog
 
-all: tests
+all: dirs test
+
+dirs:
+	mkdir -p $(BIN_DIR)
 
 tests: synth
 	$(CC) -o $(BIN_DIR)/byte_sus.o $(TST_DIR)/byte_sus_testbench.v $(VFLAGS)
