@@ -9,11 +9,10 @@ module clk_gen(
     output reg clk_f,
     output reg clk_2f,
     output reg clk_4f,
-    input reset,
-    input clk_32f);
+    input clk_32f,
+    input reset);
 
     reg q1=0, q2=0;
-
     always @(posedge clk_32f)
         begin
             if (reset == 0) begin
@@ -22,7 +21,7 @@ module clk_gen(
                 clk_f <= 0;
             end
             else begin
-                q1 <= ~q1; 
+                q1 <= ~q1;
             end
         end
     always @(negedge q1)
@@ -41,5 +40,5 @@ module clk_gen(
         begin
                 clk_f <= ~clk_f;
         end
-    
+
 endmodule

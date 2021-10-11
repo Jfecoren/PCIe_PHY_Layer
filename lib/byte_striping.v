@@ -10,7 +10,7 @@ module BYTE_STRIPING(lane_0, lane_1, valid_0, valid_1, data_in, valid_in, clk_2f
 	input [31:0] data_in;
 	input valid_in;
 	input clk_2f, clk_f;
-	
+
 	always @(posedge clk_2f)
 				begin
 					if(~clk_f)
@@ -24,7 +24,5 @@ module BYTE_STRIPING(lane_0, lane_1, valid_0, valid_1, data_in, valid_in, clk_2f
 							lane_1 <= (valid_in ? data_in:'b0);
 						end
 				end
-		
+
 endmodule
-
-
