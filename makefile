@@ -3,7 +3,7 @@ BIN_DIR := bin
 TST_DIR := test
 LIB_DIR := lib
 INC_DIR := include
-VFLAGS := -I $(TST_DIR) -I $(LIB_DIR) -I $(INC_DIR)
+VFLAGS := -I $(TST_DIR) -I $(LIB_DIR) -I $(INC_DIR) -I $(SRC_DIR)
 
 CC=iverilog
 
@@ -16,6 +16,13 @@ tests: synth
 	$(CC) -o $(BIN_DIR)/byte_sus.o $(TST_DIR)/byte_sus_testbench.v $(VFLAGS)
 	vvp $(BIN_DIR)/byte_sus.o
 	gtkwave byte_sus.vcd
+phytx: dirs
+	$(CC) -o $(BIN_DIR)/phy_tx.o $(TST_DIR)/phy_tx_testbench.v $(VFLAGS)
+	vvp $(BIN_DIR)/phy_tx.o
+	gtkwave phy_tx.vcd
+
+
+
 synth:
 	yosys -s $(LIB_DIR)/synthesis.ys
 	sed -i 's/BYTE_STRIPING/STRIPING_SYNTH/g' $(LIB_DIR)/striping_synth.v
