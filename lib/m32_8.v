@@ -4,7 +4,7 @@
  *
  */
 // 32-8b module
-module m32b_8(output reg [7:0] data_32_8,
+module m32_8(output reg [7:0] data_32_8,
 				output reg valid_32_8,
 				input [31:0] data_strp,
 				input valid_strp,

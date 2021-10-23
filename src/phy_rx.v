@@ -24,8 +24,8 @@ module PHY_RX(data_out, valid_out, data_in_0, data_in_1, reset, clk_32f);
 	//Byte Unstriping Module
 	BYTE_UNSTRIPING bte_unstrp(data_out, valid_out, data_32b_0, data_32b_1, valid_32b_0, valid_32b_1, clk_2f, clk_f);
 	//8b to 32b demuxes
-	m8b_32 conv_0(data_32b_0, valid_32b_0, data_8b_0, valid_8b_0, reset, clk_4f);
-	m8b_32 conv_1(data_32b_1, valid_32b_1, data_8b_1, valid_8b_1, reset, clk_4f);
+	m8_32 conv_0(data_32b_0, valid_32b_0, data_8b_0, valid_8b_0, reset, clk_4f, clk_32f);
+	m8_32 conv_1(data_32b_1, valid_32b_1, data_8b_1, valid_8b_1, reset, clk_4f, clk_32f);
 
 	// Parallel to Serial Module
 	serial_paralelo serelo_0(data_in_0, clk_4f, clk_32f, valid_8b_0, data_8b_0);

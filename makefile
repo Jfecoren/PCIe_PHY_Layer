@@ -18,6 +18,11 @@ phytx: dirs
 	$(CC) -o $(BIN_DIR)/phy_tx.o $(TST_DIR)/phy_tx_testbench.v $(VFLAGS)
 	vvp $(BIN_DIR)/phy_tx.o
 	gtkwave phy_tx.vcd
+phyrx: dirs
+	$(CC) -o $(BIN_DIR)/phy_rx.o $(TST_DIR)/phy_rx_testbench.v $(VFLAGS)
+	vvp $(BIN_DIR)/phy_rx.o
+	gtkwave phy_rx.vcd
+
 
 synth:
 	yosys -s $(LIB_DIR)/synthesis.ys

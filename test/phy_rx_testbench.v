@@ -1,4 +1,4 @@
-`timescale 1ns / 1ns
+`timescale 1s / 1s
 
 `include "phy_rx.v"
 `include "phy_rx_tester.v"
@@ -27,8 +27,7 @@ module RX_TESTBENCH;
                                     .data_in_0      (data_in_0),
 				    .data_in_1      (data_in_1),
 				    .reset          (reset),
-				    .clk_32f        (clk_32f),
-                                    .clk_2f         (clk_2f)
+				    .clk_32f        (clk_32f)
 				     );
 
 endmodule

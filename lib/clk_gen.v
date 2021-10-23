@@ -24,19 +24,19 @@ module clk_gen(
                 q1 <= ~q1;
             end
         end
-    always @(negedge q1)
+    always @(posedge q1)
         begin
             q2 <= ~q2;
         end
-    always @(negedge q2)
+    always @(posedge q2)
         begin
                 clk_4f <= ~clk_4f;
         end
-    always @(negedge clk_4f)
+    always @(posedge clk_4f)
         begin
                 clk_2f <= ~clk_2f;
         end
-    always @(negedge clk_2f)
+    always @(posedge clk_2f)
         begin
                 clk_f <= ~clk_f;
         end
