@@ -1,0 +1,9 @@
+# PHY Synthesis
+read_verilog -I src -I include -I lib src/phy.v
+hierarchy -check -top PHY
+proc; opt; fsm; opt; memory; opt
+techmap; opt
+dfflibmap -liberty include/cmos_cells.lib
+abc -liberty include/cmos_cells.lib; opt
+clean
+write_verilog lib/phy_synth.v

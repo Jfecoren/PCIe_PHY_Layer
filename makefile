@@ -28,10 +28,17 @@ phy: dirs
 	vvp $(BIN_DIR)/phy.o
 	gtkwave phy.vcd
 
+phys:
+	yosys -s $(SRC_DIR)/synth_phy.ys
+	#sed -i 's/BYTE_STRIPING/STRIPING_SYNTH/g' $(SRC_DIR)/striping_synth.v
+	#sed -i 's/BYTE_UNSTRIPING/UNSTRIPING_SYNTH/g' $(SRC_DIR)/unstriping_synth.v
+
 synth:
 	yosys -s $(LIB_DIR)/synthesis.ys
 	sed -i 's/BYTE_STRIPING/STRIPING_SYNTH/g' $(LIB_DIR)/striping_synth.v
 	sed -i 's/BYTE_UNSTRIPING/UNSTRIPING_SYNTH/g' $(LIB_DIR)/unstriping_synth.v
+
+
 
 dirs:
 	mkdir -p $(BIN_DIR)
