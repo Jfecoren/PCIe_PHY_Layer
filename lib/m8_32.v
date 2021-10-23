@@ -25,7 +25,6 @@ module m8_32(output reg [31:0] data_8_32,
 		end
 		
 	always @(posedge clk_4f)
-		 
 		 if(reset) begin
 			if(valid_input == 1) begin
 				buffer = {buffer[23:0], data_input};
