@@ -10,42 +10,51 @@ module serial_paralelo(input data_in,
     reg t0, t1, t2, t3, t4, t5, t6, t7; // Registros temporales para guardadar los 8 bits de data_in
     
     
-    reg buffer;
+    reg buffer0, buffer1, buffer2, buffer3, buffer4, buffer5, buffer6;
 	
-	//always @(posedge clk_32f)
+	always @(posedge clk_32f)
+		begin
+			buffer0 <= data_in;
+			buffer1 <= buffer0;
+			buffer2 <= buffer1;
+			buffer3 <= buffer2;
+			buffer4 <= buffer3;
+			buffer5 <= buffer4;
+			buffer6 <= buffer5;
+		end
     
     always @(posedge clk_32f) begin
 
         if (i==3'b000) begin
-            t0<=data_in;
+            t0<=buffer6;
             i<=3'b001;
         end
         if (i==3'b001) begin
-            t1<=data_in;
+            t1<=buffer6;
             i<=3'b011;
         end
         if (i==3'b011) begin
-            t2<=data_in;
+            t2<=buffer6;
             i<=3'b101;
         end
         if (i==3'b101) begin
-            t3<=data_in;
+            t3<=buffer6;
             i<=3'b100;
         end
         if (i==3'b100) begin
-            t4<=data_in;
+            t4<=buffer6;
             i<=3'b110;
         end
         if (i==3'b110) begin
-            t5<=data_in;
+            t5<=buffer6;
             i<=3'b010;
         end
         if (i==3'b010) begin
-            t6<=data_in;
+            t6<=buffer6;
             i<=3'b111;
         end
         if (i==3'b111) begin
-            t7<=data_in;
+            t7<=buffer6;
             i<=3'b000;
         end
 
@@ -65,7 +74,6 @@ module serial_paralelo(input data_in,
         
         
         if (active==1 & data2send==8'hBC) begin
-            
             valid_out<=0;
         end
 
@@ -77,7 +85,7 @@ module serial_paralelo(input data_in,
             active<=1;
         end
 
-        if (active==1 && data2send!=8'hBC) begin
+        if (active==1 & data2send!=8'hBC) begin
             data_out<=data2send;
             valid_out<=1;
         end

@@ -1,5 +1,6 @@
 `timescale 1s / 1s
 
+`include "clk_gen.v"
 `include "phy_rx.v"
 `include "phy_rx_tester.v"
 

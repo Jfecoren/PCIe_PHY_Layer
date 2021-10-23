@@ -9,41 +9,38 @@ module m8_32(output reg [31:0] data_8_32,
 				input [7:0] data_input,
 				input valid_input,
 				input reset,
+				input clk_f,
 				input clk_4f,
 				input clk_32f);
 
-	reg [31:0] buffer;
-	integer contador;
+	reg [31:0] buffer0, buffer1, buffer2, buffer3;
 	
-	always @(posedge clk_32f) begin
+	always @(posedge clk_32f)
+			begin
 			if(reset == 0) begin
-				contador <= 0;
 				valid_8_32 <= 0;
 				data_8_32 <= 0;
-				buffer <= 0;
+				buffer0 <= 0;
+				buffer1 <= 0;
 			end
 		end
 		
 	always @(posedge clk_4f)
-		 if(reset) begin
-			if(valid_input == 1) begin
-				buffer = {buffer[23:0], data_input};
-				if (contador == 3) begin
-					data_8_32 <= buffer;
-					valid_8_32 <= 1;
-				end
-				contador <= contador + 1;
-
-				if(contador >= 3) contador <= 0;
-			end
-			else begin			//Caso valid_input 0
-				if (contador == 4) begin
+			begin
+				if(valid_input)
+					begin
+						buffer0 <= {buffer0[23:0], data_input};
+						buffer1 <= buffer0;
+						buffer2 <= buffer1;
+						buffer3 <= buffer2;
+					end
+				else//Caso valid_input 0
 					valid_8_32 <= 0;
-					contador <= 0;
-				end
-				contador =contador + 1;
 			end
+	
+	always @(posedge clk_f)
+		begin
+			data_8_32 <= buffer3;
+			valid_8_32 <= 1;
 		end
-
-
 endmodule

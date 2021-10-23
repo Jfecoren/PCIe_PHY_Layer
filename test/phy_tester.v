@@ -13,18 +13,11 @@ module PHY_TESTER(data_out, valid_out, data_in, valid_in, reset, clk_32f, clk_2f
 		// Initialize inputs
 		{data_in, reset, valid_in} = 'b0;
 		#128 reset = 1;
-		#128 valid_in = 1;
-		
-		repeat (4)
+		#1024;
+		repeat (8)
 			begin
 				@(posedge clk_2f)
-					data_in <= 32'hABFD_1234;
-			end
-		
-		repeat (4)
-			@(posedge clk_2f) begin
-				//valid_in <= 0;
-				data_in <= 32'hBCBC_BCBC;
+					valid_in <= 1;
 			end
 		
 		
