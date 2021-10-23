@@ -11,7 +11,9 @@ module PHY(data_out, valid_out, data_in, valid_in, reset, clk_32f);
 	
 	wire bus_serial_0, bus_serial_1;
 	
+
 	PHY_TX transmisor(bus_serial_0, bus_serial_1, data_in, valid_in, reset, clk_32f);
+
 	PHY_RX receptor(data_out, valid_out, bus_serial_0, bus_serial_1, reset, clk_32f);
 
 endmodule
