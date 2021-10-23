@@ -1,10 +1,10 @@
 // PHY Layer Transmision block Tester
 
 
-module TX_TESTER(data_out_0, data_out_1, valid_out_0, valid_out_1, data_in, valid_in, reset, clk_32f, clk_2f);
-	input [7:0] data_out_0, data_out_1;
+module TX_TESTER(data_out_0, data_out_1, data_in, valid_in, reset, clk_32f, clk_2f);
+	input data_out_0, data_out_1;
 	input valid_out_0, valid_out_1;
-  input clk_2f;
+  	input clk_2f;
 	output reg [31:0] data_in;
 	output reg valid_in, reset, clk_32f;
 
