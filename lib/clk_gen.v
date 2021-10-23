@@ -5,12 +5,11 @@
  */
 // clk generator
 
-module clk_gen(
-    output reg clk_f,
-    output reg clk_2f,
-    output reg clk_4f,
-    input clk_32f,
-    input reset);
+module clk_gen(output reg clk_f,
+				output reg clk_2f,
+				output reg clk_4f,
+				input clk_32f,
+				input reset);
 
     reg q1=0, q2=0;
     always @(posedge clk_32f)

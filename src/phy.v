@@ -1,10 +1,11 @@
 
+`include "clk_gen.v"
 `include "phy_rx.v"
 `include "phy_tx.v"
 
 module PHY(data_out, valid_out, data_in, valid_in, reset, clk_32f);
-	output reg [31:0] data_out;
-	output reg valid_out;
+	output [31:0] data_out;
+	output valid_out;
 	input [31:0] data_in;
 	input valid_in, reset, clk_32f;
 	

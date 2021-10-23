@@ -6,11 +6,15 @@ module serial_paralelo(input data_in,
     integer BC_counter=0; // contador de BC
     integer active=0;
     reg [7:0] data2send; //  DATOS A ENVIAR
-    reg [2:0] i; //  contador
-    reg t0, t1, t2, t3, t4, t5, t6, t7; // Registros temporales para guardadar los 8 bits de data_in 
-
+    reg [2:0] i = 0; //  contador
+    reg t0, t1, t2, t3, t4, t5, t6, t7; // Registros temporales para guardadar los 8 bits de data_in
     
-    always @(posedge clk_32f ) begin
+    
+    reg buffer;
+	
+	//always @(posedge clk_32f)
+    
+    always @(posedge clk_32f) begin
 
         if (i==3'b000) begin
             t0<=data_in;
@@ -42,15 +46,11 @@ module serial_paralelo(input data_in,
         end
         if (i==3'b111) begin
             t7<=data_in;
+            i<=3'b000;
         end
 
-        
-
-        
     end
 
- 
-   
     always @(posedge clk_4f) begin
         i<=3'b000;
         data2send[0]<=t7;

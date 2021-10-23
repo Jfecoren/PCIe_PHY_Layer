@@ -1,6 +1,5 @@
 // PHY Layer; Transmision Module
 
-`include "clk_gen.v"
 `include "byte_striping.v"
 `include "m32_8.v"
 `include "paralelo_serial.v"

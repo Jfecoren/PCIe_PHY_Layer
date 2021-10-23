@@ -1,19 +1,33 @@
 
 
-
-module PHY_TESTER(data_out, valid_out, data_in, valid_in, reset, clk_32f);
+module PHY_TESTER(data_out, valid_out, data_in, valid_in, reset, clk_32f, clk_2f);
 	input [31:0] data_out;
 	input valid_out;
 	output reg [31:0] data_in;
 	output reg valid_in, reset, clk_32f;
 	
+	input clk_2f;
 	initial begin
 		$dumpfile("phy.vcd");
 		$dumpvars;
 		// Initialize inputs
-		{data_in, reset} = 'b0;
-		valid_in = 1;
-		#64 reset = 1;
+		{data_in, reset, valid_in} = 'b0;
+		#128 reset = 1;
+		#128 valid_in = 1;
+		
+		repeat (4)
+			begin
+				@(posedge clk_2f)
+					data_in <= 32'hABFD_1234;
+			end
+		
+		repeat (4)
+			@(posedge clk_2f) begin
+				//valid_in <= 0;
+				data_in <= 32'hBCBC_BCBC;
+			end
+		
+		
 		repeat (2)
 			begin
 				@(posedge clk_2f)
@@ -26,23 +40,19 @@ module PHY_TESTER(data_out, valid_out, data_in, valid_in, reset, clk_32f);
 					data_in <= 32'hCCCC_CCCC;
 				@(posedge clk_2f)
 					data_in <= 32'hFFFF_FFFF;
-					valid_in <= 0;
 				@(posedge clk_2f)
 					data_in <= 32'hEEEE_EEEE;
 				@(posedge clk_2f)
 					data_in <= 32'hDDDD_DDDD;
-					valid_in <= 1;
 				@(posedge clk_2f)
 					data_in <= 32'hCCCC_CCCC;
 			end
-		$finish;
+		#10000 $finish;
 	end
 	
 	
 	
 	// Clock
-	initial clk_2f = 0;
-	always #8 clk_2f <= ~clk_2f;
 	initial clk_32f = 0;
 	always #64 clk_32f <= ~clk_32f;
 endmodule

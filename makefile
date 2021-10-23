@@ -23,6 +23,10 @@ phyrx: dirs
 	vvp $(BIN_DIR)/phy_rx.o
 	gtkwave phy_rx.vcd
 
+phy: dirs
+	$(CC) -o $(BIN_DIR)/phy.o $(TST_DIR)/phy_testbench.v $(VFLAGS)
+	vvp $(BIN_DIR)/phy.o
+	gtkwave phy.vcd
 
 synth:
 	yosys -s $(LIB_DIR)/synthesis.ys

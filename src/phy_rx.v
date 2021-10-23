@@ -1,6 +1,5 @@
 // PHY Layer; Reception Module
 
-`include "clk_gen.v"
 `include "byte_unstriping.v"
 `include "m8_32.v"
 `include "serial_paralelo.v"
