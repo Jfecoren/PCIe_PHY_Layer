@@ -1,32 +1,32 @@
 // PHY Layer Reception block Tester
 
-module RX_TESTER(data_out, valid_out, data_in_0, data_in_1, valid_in_0, valid_in_1, reset, clk_32f, clk_2f);
+module RX_TESTER(data_out, valid_out, data_in_0, data_in_1, reset, clk_32f);
     input reg [31:0] data_out;
 	  input reg valid_out;
-    input clk_32f;
-    output [7:0] data_in_0, data_in_1;
-	  output valid_in_0, valid_in_1, reset, clk_2f;
+    output clk_32f;
+    output data_in_0, data_in_1;
+	  output reset;
 
   initial begin
     $dumpfile("phy_rx.vcd");
     $dumpvars;
-    {valid_in_0, valid_in_1, reset} = 2'b00;
-    #64 {valid_in_0, valid_in_1, reset} = 2'b11;
+    {reset} = 0;
+    #64 {reset} = 1;
 
     repeat (8)
 			begin
 				@(posedge clk_32f)
-					data_in_0 <= 8'hFF;
-          data_in_1 <= 8'hDD;
+					data_in_0 <= 1;
+          data_in_1 <= 0;
 				@(posedge clk_32f)
-					data_in_0 <= 8'hEE;
-          data_in_1 <= 8'hAA;
+					data_in_0 <= 0;
+          data_in_1 <= 1;
 				@(posedge clk_32f)
-					data_in_0 <= 8'hDD;
-          data_in_1 <= 8'hFF;
+					data_in_0 <= 1;
+          data_in_1 <= 1;
 				@(posedge clk_32f)
-					data_in_0 <= 8'hCA;
-          data_in_1 <= 8'hBF;
+					data_in_0 <= 0;
+          data_in_1 <= 0;
 			end
     $finish;
   end
