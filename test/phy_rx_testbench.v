@@ -4,36 +4,31 @@
 `include "phy_rx_tester.v"
 
 module RX_TESTBENCH;
-    wire [7:0] data_in_0, data_in_1;
-	wire valid_in_0, valid_in_1;
+    wire data_in_0, data_in_1;
 	wire [31:0] data_out;
 	wire valid_out, reset;
     wire clk_32f, clk_4f, clk_2f, clk_f;
 
 	clk_gen clk_gen(/*AUTOINST*/
-									.clk_2f			(clk_2f),
-									.clk_32f		(clk_32f),
-									.reset			(reset));
+				.clk_2f			(clk_2f),
+				.clk_32f		(clk_32f),
+				.reset			(reset));
 
     PHY_RX rx0(/*AUTOINST*/ .data_out       (data_out),
-						    .valid_out      (valid_out),
-                            .data_in_0      (data_in_0),
-						    .data_in_1      (data_in_1),
-                            .valid_in_0     (valid_in_0)
-                            .valid_in_1     (valid_in_1)
-						    .reset          (reset),
-						    .clk_32f        (clk_32f)
-						    );
+				.valid_out      (valid_out),
+                            	.data_in_0      (data_in_0),
+				.data_in_1      (data_in_1),
+				.reset          (reset),
+				.clk_32f        (clk_32f)
+				);
 
     RX_TESTER mtester(/*AUTOINST*/  .data_out       (data_out),
-						            .valid_out      (valid_out),
+				    .valid_out      (valid_out),
                                     .data_in_0      (data_in_0),
-						            .data_in_1      (data_in_1),
-                                    .valid_in_0     (valid_in_0)
-                                    .valid_in_1     (valid_in_1)
-						            .reset          (reset),
-						            .clk_32f        (clk_32f),
+				    .data_in_1      (data_in_1),
+				    .reset          (reset),
+				    .clk_32f        (clk_32f),
                                     .clk_2f         (clk_2f)
-						            );
+				     );
 
 endmodule
