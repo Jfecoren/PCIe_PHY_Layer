@@ -9,7 +9,6 @@ module serial_paralelo(input data_in,
     reg [2:0] i = 0; //  contador
     reg t0, t1, t2, t3, t4, t5, t6, t7; // Registros temporales para guardadar los 8 bits de data_in
     
-    
     reg buffer0, buffer1, buffer2, buffer3, buffer4, buffer5, buffer6;
 	
 	always @(posedge clk_32f)
@@ -71,8 +70,6 @@ module serial_paralelo(input data_in,
         data2send[6]<=t1;
         data2send[7]<=t0;
 
-        
-        
         if (active==1 & data2send==8'hBC) begin
             valid_out<=0;
         end

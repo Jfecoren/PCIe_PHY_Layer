@@ -44,20 +44,24 @@ bus_ps:
 	$(CC) -o $(BIN_DIR)/parallel_serial.o $(TST_DIR)/parallel_serial_testbench.v $(VFLAGS)
 	vvp $(BIN_DIR)/parallel_serial.o
 	gtkwave parallel_serial.vcd
+bus_sp:
+	$(CC) -o $(BIN_DIR)/serial_parallel.o $(TST_DIR)/serial_parallel_testbench.v $(VFLAGS)
+	vvp $(BIN_DIR)/serial_parallel.o
+	gtkwave serial_parallel.vcd
 
 
 synth_byte:
 	yosys -s $(SYN_DIR)/synth_modules_byte.ys
 	sed -i 's/BYTE_STRIPING/STRIPING_SYNTH/g' $(SYN_DIR)/striping_synth.v
 	sed -i 's/BYTE_UNSTRIPING/UNSTRIPING_SYNTH/g' $(SYN_DIR)/unstriping_synth.v
-synth_conv:	
+synth_conv:
 	yosys -s $(SYN_DIR)/synth_modules_conv.ys
 	sed -i 's/m32_8(/m32_8_synth(/g' $(SYN_DIR)/m32_8_synth.v
 	sed -i 's/m8_32(/m8_32_synth(/g' $(SYN_DIR)/m8_32_synth.v
 synth_bus:
 	yosys -s $(SYN_DIR)/synth_modules_bus.ys
 	sed -i 's/paralelo_serial(/paralelo_serial_synth(/g' $(SYN_DIR)/parallel_serial_synth.v
-	#sed -i 's/m8_32(/m8_32_synth(/g' $(SYN_DIR)/m8_32_synth.v
+	sed -i 's/serial_paralelo(/serial_paralelo_synth(/g' $(SYN_DIR)/serial_parallel_synth.v
 
 
 dirs:

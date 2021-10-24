@@ -1,0 +1,40 @@
+[*]
+[*] GTKWave Analyzer v3.3.103 (w)1999-2019 BSI
+[*] Sun Oct 24 08:27:46 2021
+[*]
+[dumpfile] "/home/coren/Documents/Verilog/PCIe_PHY_Layer/parallel_serial.vcd"
+[dumpfile_mtime] "Sun Oct 24 08:24:49 2021"
+[dumpfile_size] 20952
+[savefile] "/home/coren/Documents/Verilog/PCIe_PHY_Layer/bin/parallel_serial.gtkw"
+[timestart] 0
+[size] 1000 600
+[pos] 158 96
+*-35.052414 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
+[sst_width] 233
+[signals_width] 142
+[sst_expanded] 1
+[sst_vpaned_height] 144
+@200
+-Inputs
+@28
+parallel_serial_testbench.clk_4f
+parallel_serial_testbench.clk_32f
+parallel_serial_testbench.reset
+@22
+parallel_serial_testbench.data_in[7:0]
+@28
+parallel_serial_testbench.valid_in
+@200
+-
+-Conductual
+@28
+[color] 3
+parallel_serial_testbench.data_out
+@200
+-
+-Synthesis
+@28
+[color] 2
+parallel_serial_testbench.data_out_synth
+[pattern_trace] 1
+[pattern_trace] 0

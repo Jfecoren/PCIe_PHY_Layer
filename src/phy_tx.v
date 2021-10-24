@@ -26,8 +26,8 @@ module PHY_TX(data_out_0, data_out_1, data_in, valid_in, reset, clk_32f);
 	m32_8 conv_1(data_8b_1, valid_out_1, lane_1, valid_1, reset, clk_4f);
 	
 	// Parallel to Serial Module
-	paralelo_serial parial_0(clk_4f, clk_32f, data_8b_0, valid_out_0, data_out_0);
-	paralelo_serial parial_1(clk_4f, clk_32f, data_8b_1, valid_out_1, data_out_1);
+	paralelo_serial parial_0(clk_4f, clk_32f, data_8b_0, valid_out_0, reset, data_out_0);
+	paralelo_serial parial_1(clk_4f, clk_32f, data_8b_1, valid_out_1, reset, data_out_1);
 	
 	
 

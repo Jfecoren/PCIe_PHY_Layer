@@ -2,6 +2,8 @@
 
 module serial_parallel_tester (input valid_out,
                                  input [7:0] data_out,
+                                 input [7:0] data_out_synth,
+                                 input valid_out_synth,
                                  output reg data_in,
                                  output reg clk_4f,
                                  output reg clk_32f);
@@ -9,7 +11,6 @@ module serial_parallel_tester (input valid_out,
         $dumpfile("serial_parallel.vcd");
         $dumpvars;
 
-        data_in <=0;
         
         //Se envia el valor de AA en binario
         @(posedge clk_4f);
@@ -199,10 +200,6 @@ module serial_parallel_tester (input valid_out,
         @(posedge clk_32f);
          data_in<=1;
       
-    
-    
-        
-
         //Se envia el valor de 0 en binario
         @(posedge clk_4f);
         data_in<=0;

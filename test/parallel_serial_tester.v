@@ -3,13 +3,15 @@ module parallel_serial_tester( input data_out,
                                  output reg clk_32f,
                                  output reg clk_4f,
                                  output reg [7:0] data_in,
-                                 output reg valid_in);
+                                 output reg valid_in,
+                                 output reg reset);
     initial begin
     $dumpfile("parallel_serial.vcd");
     $dumpvars;
 
-    {valid_in} <= 0;
-    data_in <= 8'h00;
+    {valid_in, reset} = 0;
+    #16 reset = 1;
+
     @(posedge clk_4f);
         valid_in <= 0;
         data_in <= 8'h00;

@@ -8,3 +8,15 @@ dfflibmap -liberty include/cmos_cells.lib
 abc -liberty include/cmos_cells.lib; opt
 clean
 write_verilog synth/parallel_serial_synth.v
+
+
+
+# Serial-Parallel Module Synthesis
+read_verilog lib/serial_paralelo.v
+hierarchy -check -top serial_paralelo
+proc; opt; fsm; opt; memory; opt
+techmap; opt
+dfflibmap -liberty include/cmos_cells.lib
+abc -liberty include/cmos_cells.lib; opt
+clean
+write_verilog synth/serial_parallel_synth.v
