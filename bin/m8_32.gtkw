@@ -1,0 +1,52 @@
+[*]
+[*] GTKWave Analyzer v3.3.103 (w)1999-2019 BSI
+[*] Sun Oct 24 06:32:45 2021
+[*]
+[dumpfile] "/home/coren/Documents/Verilog/PCIe_PHY_Layer/m8_32.vcd"
+[dumpfile_mtime] "Sun Oct 24 06:31:00 2021"
+[dumpfile_size] 149687
+[savefile] "/home/coren/Documents/Verilog/PCIe_PHY_Layer/bin/m8_32.gtkw"
+[timestart] 0
+[size] 1368 836
+[pos] -39 -39
+*-35.769161 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
+[sst_width] 233
+[signals_width] 197
+[sst_expanded] 1
+[sst_vpaned_height] 226
+@200
+-Inputs
+@28
+m8_32b_testbench.sinc
+m8_32b_testbench.reset
+m8_32b_testbench.clk_f
+m8_32b_testbench.clk_4f
+m8_32b_testbench.clk_32f
+@22
+m8_32b_testbench.data_input[7:0]
+@28
+m8_32b_testbench.valid_input
+@200
+-
+-Conductual
+@22
+[color] 3
+m8_32b_testbench.data_8_32[31:0]
+@28
+[color] 3
+m8_32b_testbench.valid_8_32
+[color] 3
+m8_32b_testbench.sincout
+@200
+-
+-Synthetized
+@22
+[color] 2
+m8_32b_testbench.data_8_32_sint[31:0]
+@28
+[color] 2
+m8_32b_testbench.valid_8_32_sint
+[color] 2
+m8_32b_testbench.sincout_s
+[pattern_trace] 1
+[pattern_trace] 0

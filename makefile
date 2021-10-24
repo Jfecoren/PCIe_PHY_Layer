@@ -11,7 +11,7 @@ all:
 	@echo "type make then tab tab to see targets..."
 
 
-bytesus: dirs synth
+bytesus: dirs
 	$(CC) -o $(BIN_DIR)/byte_sus.o $(TST_DIR)/byte_sus_testbench.v $(VFLAGS)
 	vvp $(BIN_DIR)/byte_sus.o
 	gtkwave byte_sus.vcd
@@ -32,24 +32,32 @@ phy: dirs
 phys:
 	yosys -s $(SYN_DIR)/synth_phy.ys
 
-
-
-m32_8s:
+m32_8s: dirs
 	$(CC) -o $(BIN_DIR)/m32_8.o $(TST_DIR)/32_8b_testbench.v $(VFLAGS)
 	vvp $(BIN_DIR)/m32_8.o
 	gtkwave m32_8.vcd
-m8_32s:
+m8_32s: dirs
 	$(CC) -o $(BIN_DIR)/m8_32.o $(TST_DIR)/8_32b_testbench.v $(VFLAGS)
 	vvp $(BIN_DIR)/m8_32.o
 	gtkwave m8_32.vcd
+bus_ps:
+	$(CC) -o $(BIN_DIR)/parallel_serial.o $(TST_DIR)/parallel_serial_testbench.v $(VFLAGS)
+	vvp $(BIN_DIR)/parallel_serial.o
+	gtkwave parallel_serial.vcd
 
-synthm:
-	yosys -s $(SYN_DIR)/synth_modules.ys
+
+synth_byte:
+	yosys -s $(SYN_DIR)/synth_modules_byte.ys
 	sed -i 's/BYTE_STRIPING/STRIPING_SYNTH/g' $(SYN_DIR)/striping_synth.v
 	sed -i 's/BYTE_UNSTRIPING/UNSTRIPING_SYNTH/g' $(SYN_DIR)/unstriping_synth.v
+synth_conv:	
+	yosys -s $(SYN_DIR)/synth_modules_conv.ys
 	sed -i 's/m32_8(/m32_8_synth(/g' $(SYN_DIR)/m32_8_synth.v
 	sed -i 's/m8_32(/m8_32_synth(/g' $(SYN_DIR)/m8_32_synth.v
-
+synth_bus:
+	yosys -s $(SYN_DIR)/synth_modules_bus.ys
+	sed -i 's/paralelo_serial(/paralelo_serial_synth(/g' $(SYN_DIR)/parallel_serial_synth.v
+	#sed -i 's/m8_32(/m8_32_synth(/g' $(SYN_DIR)/m8_32_synth.v
 
 
 dirs:

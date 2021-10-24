@@ -1,10 +1,12 @@
-module probador_serial_paralelo (input valid_out,
+
+
+module serial_parallel_tester (input valid_out,
                                  input [7:0] data_out,
                                  output reg data_in,
                                  output reg clk_4f,
                                  output reg clk_32f);
     initial begin
-        $dumpfile("serial_paralelo.vcd");
+        $dumpfile("serial_parallel.vcd");
         $dumpvars;
 
         data_in <=0;

@@ -4,7 +4,7 @@ module paralelo_serial(input clk_4f,
                         input valid_in,
                         output reg data_out);
 
-    reg [2:0] selector = 0;
+    reg [2:0] selector;
     reg [7:0] data2send;
 
     always @(posedge clk_4f) begin
@@ -16,8 +16,9 @@ module paralelo_serial(input clk_4f,
         end
     end
    
-   
-   always @(posedge clk_32f) begin
+    always @(posedge clk_32f)
+        begin
+
             if (selector==3'b000) begin
                 data_out<=data2send[7];
                 selector<=3'b001;
