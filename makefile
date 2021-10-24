@@ -3,7 +3,8 @@ BIN_DIR := bin
 TST_DIR := test
 LIB_DIR := lib
 INC_DIR := include
-VFLAGS := -I $(TST_DIR) -I $(LIB_DIR) -I $(INC_DIR) -I $(SRC_DIR)
+SYN_DIR := synth
+VFLAGS := -I $(TST_DIR) -I $(LIB_DIR) -I $(INC_DIR) -I $(SRC_DIR) -I $(SYN_DIR)
 CC=iverilog
 
 all:
@@ -29,14 +30,25 @@ phy: dirs
 	gtkwave phy.vcd
 
 phys:
-	yosys -s $(SRC_DIR)/synth_phy.ys
-	#sed -i 's/BYTE_STRIPING/STRIPING_SYNTH/g' $(SRC_DIR)/striping_synth.v
-	#sed -i 's/BYTE_UNSTRIPING/UNSTRIPING_SYNTH/g' $(SRC_DIR)/unstriping_synth.v
+	yosys -s $(SYN_DIR)/synth_phy.ys
 
-synth:
-	yosys -s $(LIB_DIR)/synthesis.ys
-	sed -i 's/BYTE_STRIPING/STRIPING_SYNTH/g' $(LIB_DIR)/striping_synth.v
-	sed -i 's/BYTE_UNSTRIPING/UNSTRIPING_SYNTH/g' $(LIB_DIR)/unstriping_synth.v
+
+
+m32_8s:
+	$(CC) -o $(BIN_DIR)/m32_8.o $(TST_DIR)/32_8b_testbench.v $(VFLAGS)
+	vvp $(BIN_DIR)/m32_8.o
+	gtkwave m32_8.vcd
+m8_32s:
+	$(CC) -o $(BIN_DIR)/m8_32.o $(TST_DIR)/8_32b_testbench.v $(VFLAGS)
+	vvp $(BIN_DIR)/m8_32.o
+	gtkwave m8_32.vcd
+
+synthm:
+	yosys -s $(SYN_DIR)/synth_modules.ys
+	sed -i 's/BYTE_STRIPING/STRIPING_SYNTH/g' $(SYN_DIR)/striping_synth.v
+	sed -i 's/BYTE_UNSTRIPING/UNSTRIPING_SYNTH/g' $(SYN_DIR)/unstriping_synth.v
+	sed -i 's/m32_8(/m32_8_synth(/g' $(SYN_DIR)/m32_8_synth.v
+	sed -i 's/m8_32(/m8_32_synth(/g' $(SYN_DIR)/m8_32_synth.v
 
 
 

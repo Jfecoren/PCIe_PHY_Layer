@@ -3,7 +3,7 @@
 `include "cmos_cells.v"
 
 `include "phy.v"
-//`include "phy_synth.v"
+`include "phy_synth.v"
 `include "phy_tester.v"
 
 module PHY_TESTBENCH;

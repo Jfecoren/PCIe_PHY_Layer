@@ -1,0 +1,41 @@
+
+
+# Byte Striping Synthesis
+read_verilog -I lib lib/byte_striping.v
+hierarchy -check -top BYTE_STRIPING
+proc; opt; fsm; opt; memory; opt
+techmap; opt
+dfflibmap -liberty include/cmos_cells.lib
+abc -liberty include/cmos_cells.lib; opt
+clean
+write_verilog synth/striping_synth.v
+
+# Byte Unstriping Synthesis
+read_verilog -I lib lib/byte_unstriping.v
+hierarchy -check -top BYTE_UNSTRIPING
+proc; opt; fsm; opt; memory; opt
+techmap; opt
+dfflibmap -liberty include/cmos_cells.lib
+abc -liberty include/cmos_cells.lib; opt
+clean
+write_verilog synth/unstriping_synth.v
+
+# 32b-8b Converter Synthesis
+read_verilog -I lib lib/m32_8.v
+hierarchy -check -top m32_8
+proc; opt; fsm; opt; memory; opt
+techmap; opt
+dfflibmap -liberty include/cmos_cells.lib
+abc -liberty include/cmos_cells.lib; opt
+clean
+write_verilog synth/m32_8_synth.v
+
+# 32b-8b Converter Synthesis
+read_verilog -I lib lib/m8_32.v
+hierarchy -check -top m8_32
+proc; opt; fsm; opt; memory; opt
+techmap; opt
+dfflibmap -liberty include/cmos_cells.lib
+abc -liberty include/cmos_cells.lib; opt
+clean
+write_verilog synth/m8_32_synth.v

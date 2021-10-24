@@ -1,0 +1,47 @@
+[*]
+[*] GTKWave Analyzer v3.3.103 (w)1999-2019 BSI
+[*] Sun Oct 24 06:08:53 2021
+[*]
+[dumpfile] "/home/coren/Documents/Verilog/PCIe_PHY_Layer/byte_sus.vcd"
+[dumpfile_mtime] "Sun Oct 24 06:04:22 2021"
+[dumpfile_size] 97621
+[savefile] "/home/coren/Documents/Verilog/PCIe_PHY_Layer/bin/byte_unstriping.gtkw"
+[timestart] 0
+[size] 1368 836
+[pos] -51 -51
+*-5.722744 0 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
+[sst_width] 233
+[signals_width] 158
+[sst_expanded] 1
+[sst_vpaned_height] 226
+@200
+-Inputs
+@28
+TESTBENCH_UNSTRIPING.clk_f
+TESTBENCH_UNSTRIPING.clk_2f
+@22
+TESTBENCH_UNSTRIPING.lane_0[31:0]
+TESTBENCH_UNSTRIPING.lane_1[31:0]
+@28
+TESTBENCH_UNSTRIPING.valid_0
+TESTBENCH_UNSTRIPING.valid_1
+@200
+-
+-Conductual
+@22
+[color] 3
+TESTBENCH_UNSTRIPING.data_out[31:0]
+@28
+[color] 3
+TESTBENCH_UNSTRIPING.valid_out
+@200
+-
+-Synthetized
+@22
+[color] 2
+TESTBENCH_UNSTRIPING.data_out_s[31:0]
+@28
+[color] 2
+TESTBENCH_UNSTRIPING.valid_out_s
+[pattern_trace] 1
+[pattern_trace] 0

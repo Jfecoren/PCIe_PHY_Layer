@@ -1,0 +1,35 @@
+[*]
+[*] GTKWave Analyzer v3.3.103 (w)1999-2019 BSI
+[*] Sun Oct 24 04:13:27 2021
+[*]
+[dumpfile] "/home/coren/Documents/Verilog/PCIe_PHY_Layer/m32_8.vcd"
+[dumpfile_mtime] "Sun Oct 24 04:10:41 2021"
+[dumpfile_size] 38246
+[savefile] "/home/coren/Documents/Verilog/PCIe_PHY_Layer/bin/m32_8.gtkw"
+[timestart] 3700000000
+[size] 1368 836
+[pos] -51 -51
+*-33.080177 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
+[sst_width] 233
+[signals_width] 182
+[sst_expanded] 1
+[sst_vpaned_height] 226
+@28
+m32_8b_testbench.clk_4f
+m32_8b_testbench.reset
+@22
+m32_8b_testbench.data_strp[31:0]
+@28
+m32_8b_testbench.valid_strp
+@22
+m32_8b_testbench.data_32_8[7:0]
+@28
+m32_8b_testbench.valid_32_8
+@22
+[color] 2
+m32_8b_testbench.data_32_8_sint[7:0]
+@28
+[color] 2
+m32_8b_testbench.valid_32_8_sint
+[pattern_trace] 1
+[pattern_trace] 0

@@ -3,8 +3,8 @@ module serial_paralelo(input data_in,
                        input clk_32f,
                        output reg valid_out,
                        output reg [7:0] data_out);
-    integer BC_counter=0; // contador de BC
-    integer active=0;
+    reg BC_counter=0; // contador de BC
+    reg active=0;
     reg [7:0] data2send; //  DATOS A ENVIAR
     reg [2:0] i = 0; //  contador
     reg t0, t1, t2, t3, t4, t5, t6, t7; // Registros temporales para guardadar los 8 bits de data_in
