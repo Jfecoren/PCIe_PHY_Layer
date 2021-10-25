@@ -7,7 +7,7 @@
 
 module serial_parallel_testbench;
     wire [7:0] data_out, data_out_synth;
-    wire clk_32f, clk_4f, valid_out, valid_out_synth, data_in;
+    wire clk_32f, clk_4f, valid_out, valid_out_synth, data_in, reset;
 
     serial_paralelo s_p (/*AUTOINST*/
 						// Outputs
@@ -16,13 +16,15 @@ module serial_parallel_testbench;
 						// Inputs
 						.data_in		(data_in),
 						.clk_4f			(clk_4f),
-						.clk_32f		(clk_32f));
+						.clk_32f		(clk_32f),
+						.reset			(reset));
 
     serial_parallel_tester spt(/*AUTOINST*/
 								// Outputs
 								.data_in			(data_in),
 								.clk_4f				(clk_4f),
 								.clk_32f			(clk_32f),
+								.reset				(reset),
 								// Inputs
 								.valid_out			(valid_out),
 								.data_out			(data_out),
@@ -36,6 +38,7 @@ module serial_parallel_testbench;
 						// Inputs
 						.data_in			(data_in),
 						.clk_4f				(clk_4f),
-						.clk_32f			(clk_32f));
+						.clk_32f			(clk_32f),
+						.reset			(reset));
     
 endmodule 

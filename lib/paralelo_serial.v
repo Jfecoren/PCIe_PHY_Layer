@@ -23,31 +23,6 @@ module paralelo_serial(input clk_4f,
             else
                 selector <= 0;
             
-            case(selector)
-                0: begin
-                    data_out<=data2send[7];
-                end
-                1: begin
-                    data_out<=data2send[6];
-                end
-                2: begin
-                    data_out<=data2send[5];
-                end
-                3: begin
-                    data_out<=data2send[4];
-                end
-                4: begin
-                    data_out<=data2send[3];
-                end
-                5: begin
-                    data_out<=data2send[2];
-                end
-                6: begin
-                    data_out<=data2send[1];
-                end
-                7: begin
-                    data_out<=data2send[0]; 
-                end
-            endcase
+            data_out <= data2send[7 - selector];
    end
 endmodule 
