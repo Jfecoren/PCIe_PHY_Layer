@@ -17,7 +17,9 @@ module paralelo_serial(input clk_4f,
                     if (~valid_in)
                         data2send <= 8'hBC;
                     else if(valid_in)
-                        data2send <= data_in;
+                        begin
+                            data2send <= data_in;
+                        end
 
                 end
         end
