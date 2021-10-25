@@ -24,7 +24,7 @@ module paralelo_serial(input clk_4f,
                 end
         end
    
-    always @(posedge clk_32f)
+    always @(negedge clk_32f)
         begin
             if(~reset)
                 begin

@@ -1,5 +1,5 @@
 # PHY TX Synthesis
-read_verilog -I src -I include -I lib src/phy_tx.v
+read_verilog -I src -I lib src/phy_tx.v
 hierarchy -check -top PHY_TX
 proc; opt; fsm; opt; memory; opt
 techmap; opt
@@ -9,7 +9,7 @@ clean
 write_verilog synth/phy_tx_synth.v
 
 # PHY RX Synthesis
-read_verilog -I src -I include -I lib src/phy_rx.v
+read_verilog -I src -I lib src/phy_rx.v
 hierarchy -check -top PHY_RX
 proc; opt; fsm; opt; memory; opt
 techmap; opt
