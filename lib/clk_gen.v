@@ -14,7 +14,7 @@ module clk_gen(output reg clk_f,
     reg q1, q2;
     always @(posedge clk_32f)
         begin
-            if (reset == 0) begin
+            if (~reset) begin
                 clk_4f <= 0;
                 clk_2f <= 0;
                 q2 <= 0;

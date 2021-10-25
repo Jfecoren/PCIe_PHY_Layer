@@ -1,9 +1,9 @@
-# PHY Synthesis
-read_verilog -I src -I include -I lib src/phy.v
-hierarchy -check -top PHY
+# Clock Generator Module Synthesis
+read_verilog lib/clk_gen.v
+hierarchy -check -top clk_gen
 proc; opt; fsm; opt; memory; opt
 techmap; opt
 dfflibmap -liberty include/cmos_cells.lib
 abc -liberty include/cmos_cells.lib; opt
 clean
-write_verilog synth/phy_synth.v
+write_verilog synth/clk_gen_synth.v

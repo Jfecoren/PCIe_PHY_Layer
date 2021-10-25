@@ -1,17 +1,18 @@
 
 
-module PHY_TESTER(data_out, valid_out, data_in, valid_in, reset, clk_32f, clk_2f);
+module PHY_TESTER(data_out, valid_out, data_in, valid_in, reset, clk_32f, clk_2f, sincronizar_bus);
 	input [31:0] data_out;
 	input valid_out;
 	output reg [31:0] data_in;
 	output reg valid_in, reset, clk_32f;
+	output reg sincronizar_bus;
 	
 	input clk_2f;
 	initial begin
 		$dumpfile("phy.vcd");
 		$dumpvars;
 		// Initialize inputs
-		{data_in, reset, valid_in} = 'b0;
+		{data_in, reset, valid_in, sincronizar_bus} = 'b0;
 		#128 reset = 1;
 		#256;
 		repeat (8)

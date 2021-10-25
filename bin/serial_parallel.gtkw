@@ -1,0 +1,51 @@
+[*]
+[*] GTKWave Analyzer v3.3.103 (w)1999-2019 BSI
+[*] Mon Oct 25 03:14:21 2021
+[*]
+[dumpfile] "/home/coren/Documents/Verilog/PCIe_PHY_Layer/serial_parallel.vcd"
+[dumpfile_mtime] "Mon Oct 25 03:10:32 2021"
+[dumpfile_size] 58925
+[savefile] "/home/coren/Documents/Verilog/PCIe_PHY_Layer/bin/serial_parallel.gtkw"
+[timestart] 0
+[size] 1368 836
+[pos] -101 -101
+*-35.984722 307000000000 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
+[treeopen] serial_parallel_testbench.
+[sst_width] 233
+[signals_width] 182
+[sst_expanded] 1
+[sst_vpaned_height] 226
+@200
+-Inputs
+@28
+serial_parallel_testbench.reset
+serial_parallel_testbench.clk_4f
+serial_parallel_testbench.clk_32f
+serial_parallel_testbench.data_in
+@200
+-
+-Conductual
+@22
+[color] 3
+serial_parallel_testbench.data_out[7:0]
+@28
+[color] 3
+serial_parallel_testbench.valid_out
+@200
+-
+-Synthesis
+@22
+[color] 2
+serial_parallel_testbench.data_out_synth[7:0]
+@28
+[color] 2
+serial_parallel_testbench.valid_out_synth
+@200
+-
+-Counter Flags
+@24
+serial_parallel_testbench.s_p.bc_counter[2:0]
+@28
+serial_parallel_testbench.s_p.active
+[pattern_trace] 1
+[pattern_trace] 0

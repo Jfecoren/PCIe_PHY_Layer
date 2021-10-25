@@ -1,6 +1,9 @@
 `timescale 1ns / 1ns
-`include "clk_gen.v"
-`include "phy_tx.v"
+`include "cmos_cells.v"
+
+//`include "clk_gen.v"
+//`include "phy_tx.v"
+`include "phy_tx_synth.v"
 `include "phy_tx_tester.v"
 
 

@@ -1,7 +1,9 @@
 `timescale 1s / 1s
+`include "cmos_cells.v"
 
-`include "clk_gen.v"
+//`include "clk_gen.v"
 `include "phy_rx.v"
+//`include "phy_rx_synth.v"
 `include "phy_rx_tester.v"
 
 module RX_TESTBENCH;
@@ -17,7 +19,7 @@ module RX_TESTBENCH;
 
     PHY_RX rx0(/*AUTOINST*/ .data_out       (data_out),
 				.valid_out      (valid_out),
-                            	.data_in_0      (data_in_0),
+                .data_in_0      (data_in_0),
 				.data_in_1      (data_in_1),
 				.reset          (reset),
 				.clk_32f        (clk_32f)
@@ -25,7 +27,7 @@ module RX_TESTBENCH;
 
     RX_TESTER mtester(/*AUTOINST*/  .data_out       (data_out),
 				    .valid_out      (valid_out),
-                                    .data_in_0      (data_in_0),
+                    .data_in_0      (data_in_0),
 				    .data_in_1      (data_in_1),
 				    .reset          (reset),
 				    .clk_32f        (clk_32f)
