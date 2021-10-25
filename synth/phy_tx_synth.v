@@ -2065,18 +2065,18 @@ endmodule
 
 (* top =  1  *)
 (* src = "src/phy_tx.v:9" *)
-module PHY_TX(data_out_0, data_out_1, data_in, valid_in, reset, clk_32f);
-  (* src = "src/phy_tx.v:15" *)
-  wire clk_2f;
+module PHY_TX(data_out_0, data_out_1, data_in, valid_in, reset, clk_32f, clk_4f, clk_2f, clk_f);
+  (* src = "src/phy_tx.v:12" *)
+  input clk_2f;
   (* src = "src/phy_tx.v:12" *)
   input clk_32f;
-  (* src = "src/phy_tx.v:15" *)
-  wire clk_4f;
-  (* src = "src/phy_tx.v:15" *)
-  wire clk_f;
-  (* src = "src/phy_tx.v:17" *)
+  (* src = "src/phy_tx.v:12" *)
+  input clk_4f;
+  (* src = "src/phy_tx.v:12" *)
+  input clk_f;
+  (* src = "src/phy_tx.v:16" *)
   wire [7:0] data_8b_0;
-  (* src = "src/phy_tx.v:17" *)
+  (* src = "src/phy_tx.v:16" *)
   wire [7:0] data_8b_1;
   (* src = "src/phy_tx.v:11" *)
   input [31:0] data_in;
@@ -2084,24 +2084,24 @@ module PHY_TX(data_out_0, data_out_1, data_in, valid_in, reset, clk_32f);
   output data_out_0;
   (* src = "src/phy_tx.v:10" *)
   output data_out_1;
-  (* src = "src/phy_tx.v:16" *)
+  (* src = "src/phy_tx.v:15" *)
   wire [31:0] lane_0;
-  (* src = "src/phy_tx.v:16" *)
+  (* src = "src/phy_tx.v:15" *)
   wire [31:0] lane_1;
   (* src = "src/phy_tx.v:12" *)
   input reset;
-  (* src = "src/phy_tx.v:19" *)
+  (* src = "src/phy_tx.v:18" *)
   wire valid_0;
-  (* src = "src/phy_tx.v:19" *)
+  (* src = "src/phy_tx.v:18" *)
   wire valid_1;
   (* src = "src/phy_tx.v:12" *)
   input valid_in;
-  (* src = "src/phy_tx.v:18" *)
+  (* src = "src/phy_tx.v:17" *)
   wire valid_out_0;
-  (* src = "src/phy_tx.v:18" *)
+  (* src = "src/phy_tx.v:17" *)
   wire valid_out_1;
   (* module_not_derived = 32'd1 *)
-  (* src = "src/phy_tx.v:24" *)
+  (* src = "src/phy_tx.v:22" *)
   BYTE_STRIPING bte_strp (
     .clk_2f(clk_2f),
     .clk_f(clk_f),
@@ -2113,16 +2113,7 @@ module PHY_TX(data_out_0, data_out_1, data_in, valid_in, reset, clk_32f);
     .valid_in(valid_in)
   );
   (* module_not_derived = 32'd1 *)
-  (* src = "src/phy_tx.v:22" *)
-  clk_gen clock_gen (
-    .clk_2f(clk_2f),
-    .clk_32f(clk_32f),
-    .clk_4f(clk_4f),
-    .clk_f(clk_f),
-    .reset(reset)
-  );
-  (* module_not_derived = 32'd1 *)
-  (* src = "src/phy_tx.v:26" *)
+  (* src = "src/phy_tx.v:24" *)
   m32_8 conv_0 (
     .clk_4f(clk_4f),
     .data_32_8(data_8b_0),
@@ -2132,7 +2123,7 @@ module PHY_TX(data_out_0, data_out_1, data_in, valid_in, reset, clk_32f);
     .valid_strp(valid_0)
   );
   (* module_not_derived = 32'd1 *)
-  (* src = "src/phy_tx.v:27" *)
+  (* src = "src/phy_tx.v:25" *)
   m32_8 conv_1 (
     .clk_4f(clk_4f),
     .data_32_8(data_8b_1),
@@ -2142,7 +2133,7 @@ module PHY_TX(data_out_0, data_out_1, data_in, valid_in, reset, clk_32f);
     .valid_strp(valid_1)
   );
   (* module_not_derived = 32'd1 *)
-  (* src = "src/phy_tx.v:30" *)
+  (* src = "src/phy_tx.v:28" *)
   paralelo_serial parial_0 (
     .clk_32f(clk_32f),
     .clk_4f(clk_4f),
@@ -2152,7 +2143,7 @@ module PHY_TX(data_out_0, data_out_1, data_in, valid_in, reset, clk_32f);
     .valid_in(valid_out_0)
   );
   (* module_not_derived = 32'd1 *)
-  (* src = "src/phy_tx.v:31" *)
+  (* src = "src/phy_tx.v:29" *)
   paralelo_serial parial_1 (
     .clk_32f(clk_32f),
     .clk_4f(clk_4f),
@@ -2161,26 +2152,6 @@ module PHY_TX(data_out_0, data_out_1, data_in, valid_in, reset, clk_32f);
     .reset(reset),
     .valid_in(valid_out_1)
   );
-endmodule
-
-(* src = "lib/clk_gen.v:8" *)
-module clk_gen(clk_f, clk_2f, clk_4f, clk_32f, reset);
-  (* src = "lib/clk_gen.v:9" *)
-  output clk_2f;
-  (* src = "lib/clk_gen.v:11" *)
-  input clk_32f;
-  (* src = "lib/clk_gen.v:10" *)
-  output clk_4f;
-  (* src = "lib/clk_gen.v:8" *)
-  output clk_f;
-  (* src = "lib/clk_gen.v:14" *)
-  wire q2;
-  (* src = "lib/clk_gen.v:12" *)
-  input reset;
-  assign clk_2f = 1'h0;
-  assign clk_4f = 1'h0;
-  assign clk_f = 1'h0;
-  assign q2 = 1'h0;
 endmodule
 
 (* src = "lib/m32_8.v:7" *)
@@ -2717,55 +2688,21 @@ endmodule
 
 (* src = "lib/paralelo_serial.v:1" *)
 module paralelo_serial(clk_4f, clk_32f, data_in, valid_in, reset, data_out);
-  (* src = "lib/paralelo_serial.v:11" *)
-  wire [7:0] _000_;
-  (* src = "lib/paralelo_serial.v:19" *)
-  wire _001_;
-  (* src = "lib/paralelo_serial.v:19" *)
-  wire [2:0] _002_;
-  wire _003_;
-  wire _004_;
-  wire _005_;
-  wire _006_;
-  wire _007_;
-  wire _008_;
-  wire _009_;
-  wire _010_;
-  wire _011_;
-  wire _012_;
-  wire _013_;
-  wire _014_;
-  wire _015_;
-  wire _016_;
-  wire _017_;
-  wire _018_;
-  wire _019_;
-  wire _020_;
-  wire _021_;
-  wire _022_;
-  wire _023_;
-  wire _024_;
-  wire _025_;
-  wire _026_;
-  wire _027_;
-  wire _028_;
-  wire _029_;
-  wire _030_;
-  wire _031_;
-  wire _032_;
-  wire _033_;
-  wire _034_;
-  wire _035_;
-  wire _036_;
-  wire _037_;
-  wire _038_;
-  wire _039_;
-  wire _040_;
-  wire _041_;
-  wire _042_;
-  wire _043_;
-  wire _044_;
-  wire _045_;
+  (* src = "lib/paralelo_serial.v:26" *)
+  wire _00_;
+  (* src = "lib/paralelo_serial.v:26" *)
+  wire [2:0] _01_;
+  wire _02_;
+  wire _03_;
+  wire _04_;
+  wire _05_;
+  wire _06_;
+  wire _07_;
+  wire _08_;
+  wire _09_;
+  wire _10_;
+  wire _11_;
+  wire _12_;
   (* src = "lib/paralelo_serial.v:2" *)
   input clk_32f;
   (* src = "lib/paralelo_serial.v:1" *)
@@ -2776,340 +2713,108 @@ module paralelo_serial(clk_4f, clk_32f, data_in, valid_in, reset, data_out);
   input [7:0] data_in;
   (* src = "lib/paralelo_serial.v:6" *)
   output data_out;
+  (* src = "lib/paralelo_serial.v:10" *)
+  wire flag;
   (* src = "lib/paralelo_serial.v:5" *)
   input reset;
   (* src = "lib/paralelo_serial.v:8" *)
   wire [2:0] selector;
   (* src = "lib/paralelo_serial.v:4" *)
   input valid_in;
-  NOT _046_ (
-    .A(data_in[2]),
-    .Y(_003_)
-  );
-  NOT _047_ (
-    .A(data_in[3]),
-    .Y(_004_)
-  );
-  NOT _048_ (
-    .A(data_in[4]),
-    .Y(_005_)
-  );
-  NOT _049_ (
-    .A(data_in[5]),
-    .Y(_006_)
-  );
-  NOT _050_ (
-    .A(data_in[7]),
-    .Y(_007_)
-  );
-  NOT _051_ (
+  NOT _13_ (
     .A(reset),
-    .Y(_008_)
+    .Y(_02_)
   );
-  NOT _052_ (
-    .A(data2send[6]),
-    .Y(_009_)
-  );
-  NOT _053_ (
-    .A(data2send[7]),
-    .Y(_010_)
-  );
-  NOT _054_ (
-    .A(selector[0]),
-    .Y(_011_)
-  );
-  NOT _055_ (
-    .A(selector[1]),
-    .Y(_012_)
-  );
-  NOT _056_ (
+  NOT _14_ (
     .A(selector[2]),
-    .Y(_013_)
+    .Y(_03_)
   );
-  NAND _057_ (
-    .A(data_in[1]),
-    .B(valid_in),
-    .Y(_014_)
+  NOT _15_ (
+    .A(data_out),
+    .Y(_04_)
   );
-  NOT _058_ (
-    .A(_014_),
-    .Y(_000_[1])
-  );
-  NAND _059_ (
-    .A(valid_in),
-    .B(_003_),
-    .Y(_000_[2])
-  );
-  NAND _060_ (
-    .A(valid_in),
-    .B(_004_),
-    .Y(_000_[3])
-  );
-  NAND _061_ (
-    .A(valid_in),
-    .B(_005_),
-    .Y(_000_[4])
-  );
-  NAND _062_ (
-    .A(valid_in),
-    .B(_006_),
-    .Y(_000_[5])
-  );
-  NAND _063_ (
-    .A(valid_in),
-    .B(data_in[6]),
-    .Y(_015_)
-  );
-  NOT _064_ (
-    .A(_015_),
-    .Y(_000_[6])
-  );
-  NAND _065_ (
-    .A(valid_in),
-    .B(_007_),
-    .Y(_000_[7])
-  );
-  NOR _066_ (
-    .A(_008_),
+  NOR _16_ (
+    .A(_02_),
     .B(selector[0]),
-    .Y(_002_[0])
+    .Y(_01_[0])
   );
-  NAND _067_ (
+  NAND _17_ (
     .A(selector[0]),
     .B(selector[1]),
-    .Y(_016_)
+    .Y(_05_)
   );
-  NOT _068_ (
-    .A(_016_),
-    .Y(_017_)
+  NOT _18_ (
+    .A(_05_),
+    .Y(_06_)
   );
-  NOR _069_ (
+  NOR _19_ (
     .A(selector[0]),
     .B(selector[1]),
-    .Y(_018_)
+    .Y(_07_)
   );
-  NOT _070_ (
-    .A(_018_),
-    .Y(_019_)
+  NOT _20_ (
+    .A(_07_),
+    .Y(_08_)
   );
-  NAND _071_ (
+  NAND _21_ (
     .A(reset),
-    .B(_019_),
-    .Y(_020_)
+    .B(_08_),
+    .Y(_09_)
   );
-  NOR _072_ (
-    .A(_017_),
-    .B(_020_),
-    .Y(_002_[1])
+  NOR _22_ (
+    .A(_06_),
+    .B(_09_),
+    .Y(_01_[1])
   );
-  NOR _073_ (
-    .A(_013_),
-    .B(_016_),
-    .Y(_021_)
+  NOR _23_ (
+    .A(_03_),
+    .B(_05_),
+    .Y(_10_)
   );
-  NAND _074_ (
-    .A(_013_),
-    .B(_016_),
-    .Y(_022_)
+  NAND _24_ (
+    .A(_03_),
+    .B(_05_),
+    .Y(_11_)
   );
-  NAND _075_ (
+  NAND _25_ (
     .A(reset),
-    .B(_022_),
-    .Y(_023_)
+    .B(_11_),
+    .Y(_12_)
   );
-  NOR _076_ (
-    .A(_021_),
-    .B(_023_),
-    .Y(_002_[2])
+  NOR _26_ (
+    .A(_10_),
+    .B(_12_),
+    .Y(_01_[2])
   );
-  NOR _077_ (
-    .A(data2send[1]),
-    .B(_013_),
-    .Y(_024_)
+  NOR _27_ (
+    .A(reset),
+    .B(_04_),
+    .Y(_00_)
   );
-  NOR _078_ (
-    .A(data2send[5]),
-    .B(selector[2]),
-    .Y(_025_)
-  );
-  NOR _079_ (
-    .A(_024_),
-    .B(_025_),
-    .Y(_026_)
-  );
-  NAND _080_ (
-    .A(_011_),
-    .B(_026_),
-    .Y(_027_)
-  );
-  NAND _081_ (
-    .A(data2send[0]),
-    .B(selector[2]),
-    .Y(_028_)
-  );
-  NAND _082_ (
-    .A(data2send[4]),
-    .B(_013_),
-    .Y(_029_)
-  );
-  NAND _083_ (
-    .A(_028_),
-    .B(_029_),
-    .Y(_030_)
-  );
-  NAND _084_ (
-    .A(selector[0]),
-    .B(_030_),
-    .Y(_031_)
-  );
-  NAND _085_ (
-    .A(_027_),
-    .B(_031_),
-    .Y(_032_)
-  );
-  NAND _086_ (
-    .A(selector[1]),
-    .B(_032_),
-    .Y(_033_)
-  );
-  NAND _087_ (
-    .A(_010_),
-    .B(_013_),
-    .Y(_034_)
-  );
-  NOR _088_ (
-    .A(data2send[3]),
-    .B(_013_),
-    .Y(_035_)
-  );
-  NAND _089_ (
-    .A(_018_),
-    .B(_034_),
-    .Y(_036_)
-  );
-  NOR _090_ (
-    .A(_035_),
-    .B(_036_),
-    .Y(_037_)
-  );
-  NAND _091_ (
-    .A(data2send[2]),
-    .B(selector[2]),
-    .Y(_038_)
-  );
-  NOT _092_ (
-    .A(_038_),
-    .Y(_039_)
-  );
-  NOR _093_ (
-    .A(_009_),
-    .B(selector[2]),
-    .Y(_040_)
-  );
-  NOR _094_ (
-    .A(_039_),
-    .B(_040_),
-    .Y(_041_)
-  );
-  NAND _095_ (
-    .A(selector[0]),
-    .B(_012_),
-    .Y(_042_)
-  );
-  NOR _096_ (
-    .A(_041_),
-    .B(_042_),
-    .Y(_043_)
-  );
-  NOR _097_ (
-    .A(_037_),
-    .B(_043_),
-    .Y(_044_)
-  );
-  NAND _098_ (
-    .A(_033_),
-    .B(_044_),
-    .Y(_001_)
-  );
-  NAND _099_ (
-    .A(valid_in),
-    .B(data_in[0]),
-    .Y(_045_)
-  );
-  NOT _100_ (
-    .A(_045_),
-    .Y(_000_[0])
-  );
-  (* src = "lib/paralelo_serial.v:19" *)
-  DFF _101_ (
+  (* src = "lib/paralelo_serial.v:26" *)
+  DFF _28_ (
     .C(clk_32f),
-    .D(_002_[0]),
-    .Q(selector[0])
-  );
-  (* src = "lib/paralelo_serial.v:19" *)
-  DFF _102_ (
-    .C(clk_32f),
-    .D(_002_[1]),
-    .Q(selector[1])
-  );
-  (* src = "lib/paralelo_serial.v:19" *)
-  DFF _103_ (
-    .C(clk_32f),
-    .D(_002_[2]),
-    .Q(selector[2])
-  );
-  (* src = "lib/paralelo_serial.v:19" *)
-  DFF _104_ (
-    .C(clk_32f),
-    .D(_001_),
+    .D(_00_),
     .Q(data_out)
   );
-  (* src = "lib/paralelo_serial.v:11" *)
-  DFF _105_ (
-    .C(clk_4f),
-    .D(_000_[0]),
-    .Q(data2send[0])
+  (* src = "lib/paralelo_serial.v:26" *)
+  DFF _29_ (
+    .C(clk_32f),
+    .D(_01_[0]),
+    .Q(selector[0])
   );
-  (* src = "lib/paralelo_serial.v:11" *)
-  DFF _106_ (
-    .C(clk_4f),
-    .D(_000_[1]),
-    .Q(data2send[1])
+  (* src = "lib/paralelo_serial.v:26" *)
+  DFF _30_ (
+    .C(clk_32f),
+    .D(_01_[1]),
+    .Q(selector[1])
   );
-  (* src = "lib/paralelo_serial.v:11" *)
-  DFF _107_ (
-    .C(clk_4f),
-    .D(_000_[2]),
-    .Q(data2send[2])
+  (* src = "lib/paralelo_serial.v:26" *)
+  DFF _31_ (
+    .C(clk_32f),
+    .D(_01_[2]),
+    .Q(selector[2])
   );
-  (* src = "lib/paralelo_serial.v:11" *)
-  DFF _108_ (
-    .C(clk_4f),
-    .D(_000_[3]),
-    .Q(data2send[3])
-  );
-  (* src = "lib/paralelo_serial.v:11" *)
-  DFF _109_ (
-    .C(clk_4f),
-    .D(_000_[4]),
-    .Q(data2send[4])
-  );
-  (* src = "lib/paralelo_serial.v:11" *)
-  DFF _110_ (
-    .C(clk_4f),
-    .D(_000_[5]),
-    .Q(data2send[5])
-  );
-  (* src = "lib/paralelo_serial.v:11" *)
-  DFF _111_ (
-    .C(clk_4f),
-    .D(_000_[6]),
-    .Q(data2send[6])
-  );
-  (* src = "lib/paralelo_serial.v:11" *)
-  DFF _112_ (
-    .C(clk_4f),
-    .D(_000_[7]),
-    .Q(data2send[7])
-  );
+  assign data2send = 8'h00;
+  assign flag = 1'h1;
 endmodule

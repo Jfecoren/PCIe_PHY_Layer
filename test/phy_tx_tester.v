@@ -1,19 +1,20 @@
 // PHY Layer Transmision block Tester
 
 
-module TX_TESTER(data_out_0, data_out_1, data_in, valid_in, reset, clk_32f, clk_2f);
+module TX_TESTER(data_out_0, data_out_1, data_in, valid_in, reset, reset_clk, clk_32f);
 	input data_out_0, data_out_1;
 	input valid_out_0, valid_out_1;
-  	input clk_2f;
 	output reg [31:0] data_in;
-	output reg valid_in, reset, clk_32f;
+	output reg valid_in, reset, reset_clk, clk_32f;
 
-
+	reg clk_2f;
   initial begin
     $dumpfile("phy_tx.vcd");
     $dumpvars;
-    {valid_in, reset} = 2'b00;
-    #64 {valid_in, reset} = 2'b11;
+    {valid_in, reset, reset_clk} = 3'b000;
+	#16 reset_clk = 1;
+    #128 reset = 1;
+	#128 valid_in = 1;
 
     repeat (8)
 			begin
@@ -31,5 +32,7 @@ module TX_TESTER(data_out_0, data_out_1, data_in, valid_in, reset, clk_32f, clk_
 
   // Clock
   initial clk_32f = 0;
-  always #32 clk_32f <= ~clk_32f;
+  always #1 clk_32f <= ~clk_32f;
+  initial clk_2f = 0;
+  always #16 clk_2f <= ~clk_2f;
 endmodule

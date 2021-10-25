@@ -13,9 +13,13 @@ module RX_TESTBENCH;
     wire clk_32f, clk_4f, clk_2f, clk_f;
 
 	clk_gen clk_gen(/*AUTOINST*/
-				.clk_2f			(clk_2f),
-				.clk_32f		(clk_32f),
-				.reset			(reset));
+					// Inputs
+					.clk_32f		(clk_32f),
+					// Outputs
+					.clk_2f			(clk_2f),
+					.clk_4f			(clk_4f),
+					.clk_f			(clk_f),
+					.reset			(reset));
 
     PHY_RX rx0(/*AUTOINST*/ .data_out       (data_out),
 				.valid_out      (valid_out),

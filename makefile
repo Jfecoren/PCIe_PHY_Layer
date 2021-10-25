@@ -10,8 +10,6 @@ CC=iverilog
 all:
 	@echo "type make then tab tab to see targets..."
 
-
-
 phytx: dirs
 	$(CC) -o $(BIN_DIR)/phy_tx.o $(TST_DIR)/phy_tx_testbench.v $(VFLAGS)
 	vvp $(BIN_DIR)/phy_tx.o
@@ -68,7 +66,6 @@ synth_bus:
 	sed -i 's/serial_paralelo(/serial_paralelo_synth(/g' $(SYN_DIR)/serial_parallel_synth.v
 synth_phys:
 	yosys -s $(SYN_DIR)/synth_phys.ys
-
 dirs:
 	mkdir -p $(BIN_DIR)
 clean:

@@ -13,13 +13,8 @@ module PHY_TESTER(data_out, valid_out, data_in, valid_in, reset, clk_32f, clk_2f
 		$dumpvars;
 		// Initialize inputs
 		{data_in, reset, valid_in, sincronizar_bus} = 'b0;
-		#128 reset = 1;
-		#256;
-		repeat (8)
-			begin
-				@(posedge clk_2f)
-					valid_in <= 1;
-			end
+		#32 reset = 1;
+		#32 valid_in = 1;
 		
 		
 		repeat (2)
@@ -48,5 +43,5 @@ module PHY_TESTER(data_out, valid_out, data_in, valid_in, reset, clk_32f, clk_2f
 	
 	// Clock
 	initial clk_32f = 0;
-	always #64 clk_32f <= ~clk_32f;
+	always #2 clk_32f <= ~clk_32f;
 endmodule

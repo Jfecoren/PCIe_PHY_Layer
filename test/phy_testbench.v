@@ -12,10 +12,12 @@ module PHY_TESTBENCH;
 	wire sincronizar_bus;
 	
 	
-	clk_gen elrelojito(.clk_2f		(clk_2f),
-						.clk_32f	(clk_32f),
-						.reset		(reset)
-						);
+	clk_gen clk_gen(/*AUTOINST*/	
+						.clk_32f		(clk_32f),
+						.clk_2f			(clk_2f),
+						.clk_4f			(clk_4f),
+						.clk_f			(clk_f),
+						.reset			(reset));
 	
 	PHY elmodulito(/*AUTOINST*/
 					.data_out			(data_out),
