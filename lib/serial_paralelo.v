@@ -17,11 +17,12 @@ module serial_paralelo(input data_in,
                     active <= 0;
                     wait_buffer <= 0;
                     data2send <= 0;
+                    data_out <= 0;
+                    valid_out <= 0;
                 end
             else
                 begin
                     wait_buffer <= {wait_buffer[6:0], data_in};
-                    
                     if(counter == 8)
                         begin
                             counter <= 1;

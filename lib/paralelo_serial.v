@@ -24,13 +24,14 @@ module paralelo_serial(input clk_4f,
                 end
         end
    
-    always @(negedge clk_32f)
+    always @(posedge clk_32f)
         begin
             if(~reset)
                 begin
                     selector <= 0;
                     data2send <= 0;
                     flag <= 0;
+                    data_out <= 0;
                 end
             else if(flag)
                 begin

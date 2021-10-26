@@ -8,35 +8,28 @@
 module PHY_TESTBENCH;
 	wire [31:0] data_out, data_in;
 	wire valid_out, valid_in;
-	wire clk_32f, clk_2f, reset;
+	wire clk_32f;
 	wire sincronizar_bus;
 	
-	
-	clk_gen clk_gen(/*AUTOINST*/	
-						.clk_32f		(clk_32f),
-						.clk_2f			(clk_2f),
-						.clk_4f			(clk_4f),
-						.clk_f			(clk_f),
-						.reset			(reset));
-	
-	PHY elmodulito(/*AUTOINST*/
+	PHY phy_module(/*AUTOINST*/
 					.data_out			(data_out),
 					.data_in			(data_in),
 					.valid_out			(valid_out),
 					.valid_in			(valid_in),
 					.clk_32f			(clk_32f),
 					.reset				(reset),
+					.reset_clk			(reset_clk),
 					.sincronizar_bus	(sincronizar_bus)
 					);
 	
-	PHY_TESTER eltestesito(/*AUTOINST*/
-					.data_out		(data_out),
-					.data_in		(data_in),
-					.valid_out		(valid_out),
-					.valid_in		(valid_in),
-					.clk_32f		(clk_32f),
-					.clk_2f			(clk_2f),
-					.reset			(reset),
+	PHY_TESTER mtester(/*AUTOINST*/
+					.data_out			(data_out),
+					.data_in			(data_in),
+					.valid_out			(valid_out),
+					.valid_in			(valid_in),
+					.clk_32f			(clk_32f),
+					.reset				(reset),
+					.reset_clk			(reset_clk),
 					.sincronizar_bus	(sincronizar_bus)
 					);
 

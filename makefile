@@ -24,7 +24,12 @@ phy: dirs
 	vvp $(BIN_DIR)/phy.o
 	gtkwave phy.vcd
 
-phys:
+reload:
+	$(CC) -o $(BIN_DIR)/phy.o $(TST_DIR)/phy_testbench.v $(VFLAGS)
+	vvp $(BIN_DIR)/phy.o
+	gtkwave $(BIN_DIR)/phy.gtkw
+
+phy_s:
 	yosys -s $(SYN_DIR)/synth_phy.ys
 
 bytesus: dirs

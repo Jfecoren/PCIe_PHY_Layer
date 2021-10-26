@@ -1,22 +1,21 @@
 
 
-module PHY_TESTER(data_out, valid_out, data_in, valid_in, reset, clk_32f, clk_2f, sincronizar_bus);
+module PHY_TESTER(data_out, valid_out, data_in, valid_in, reset, reset_clk, clk_32f, sincronizar_bus);
 	input [31:0] data_out;
 	input valid_out;
 	output reg [31:0] data_in;
-	output reg valid_in, reset, clk_32f;
+	output reg valid_in, reset, reset_clk, clk_32f;
 	output reg sincronizar_bus;
-	
-	input clk_2f;
+	reg clk_2f;
 	initial begin
 		$dumpfile("phy.vcd");
 		$dumpvars;
 		// Initialize inputs
-		{data_in, reset, valid_in, sincronizar_bus} = 'b0;
-		#32 reset = 1;
-		#32 valid_in = 1;
-		
-		
+		{data_in, reset, reset_clk, valid_in, sincronizar_bus} = 'b0;
+		#4 reset_clk = 1;
+		#64 reset = 1;
+		#64 valid_in = 1;
+		@(posedge clk_2f)
 		repeat (2)
 			begin
 				@(posedge clk_2f)
@@ -42,6 +41,8 @@ module PHY_TESTER(data_out, valid_out, data_in, valid_in, reset, clk_32f, clk_2f
 	
 	
 	// Clock
+	initial clk_2f = 0;
+	always #16 clk_2f <= ~clk_2f;
 	initial clk_32f = 0;
-	always #2 clk_32f <= ~clk_32f;
+	always #1 clk_32f <= ~clk_32f;
 endmodule

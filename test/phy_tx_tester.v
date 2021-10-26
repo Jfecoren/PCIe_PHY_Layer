@@ -12,9 +12,10 @@ module TX_TESTER(data_out_0, data_out_1, data_in, valid_in, reset, reset_clk, cl
     $dumpfile("phy_tx.vcd");
     $dumpvars;
     {valid_in, reset, reset_clk} = 3'b000;
-	#16 reset_clk = 1;
-    #128 reset = 1;
-	#128 valid_in = 1;
+	#8 reset_clk = 1;
+	
+    #64 reset = 1;
+	#4 valid_in = 1;
 
     repeat (8)
 			begin

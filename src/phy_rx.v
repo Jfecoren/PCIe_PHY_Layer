@@ -1,5 +1,5 @@
 // PHY Layer; Reception Module
-
+`include "buffer4.v"
 `include "byte_unstriping.v"
 `include "m8_32.v"
 `include "serial_paralelo.v"
@@ -58,6 +58,7 @@ module PHY_RX(data_out, valid_out, data_in_0, data_in_1, reset, clk_32f, clk_4f,
                        		.reset				(reset),
                        		.valid_out			(valid_8b_0),
                        		.data_out			(data_8b_0));
+
 	serial_paralelo serelo_1(.data_in			(data_in_1),
                        		.clk_4f				(clk_4f),
                        		.clk_32f			(clk_32f),

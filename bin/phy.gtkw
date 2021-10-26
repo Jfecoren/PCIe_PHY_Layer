@@ -1,0 +1,71 @@
+[*]
+[*] GTKWave Analyzer v3.3.103 (w)1999-2019 BSI
+[*] Tue Oct 26 01:02:34 2021
+[*]
+[dumpfile] "/home/coren/Documents/Verilog/PCIe_PHY_Layer/phy.vcd"
+[dumpfile_mtime] "Tue Oct 26 01:02:26 2021"
+[dumpfile_size] 125384
+[savefile] "/home/coren/Documents/Verilog/PCIe_PHY_Layer/bin/phy.gtkw"
+[timestart] 0
+[size] 1368 836
+[pos] -1 -1
+*-37.057297 325000000000 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
+[treeopen] PHY_TESTBENCH.
+[treeopen] PHY_TESTBENCH.phy_module.
+[treeopen] PHY_TESTBENCH.phy_module.receptor.
+[sst_width] 233
+[signals_width] 161
+[sst_expanded] 1
+[sst_vpaned_height] 226
+@200
+-Clocks
+@28
+[color] 4
+PHY_TESTBENCH.phy_module.transmisor.clk_32f
+[color] 4
+PHY_TESTBENCH.phy_module.transmisor.clk_4f
+[color] 4
+PHY_TESTBENCH.phy_module.transmisor.clk_2f
+[color] 4
+PHY_TESTBENCH.phy_module.transmisor.clk_f
+@200
+-TX
+@22
+PHY_TESTBENCH.phy_module.transmisor.data_in[31:0]
+@28
+PHY_TESTBENCH.phy_module.transmisor.valid_in
+@22
+PHY_TESTBENCH.phy_module.transmisor.lane_0[31:0]
+PHY_TESTBENCH.phy_module.transmisor.lane_1[31:0]
+PHY_TESTBENCH.phy_module.transmisor.data_8b_0[7:0]
+PHY_TESTBENCH.phy_module.transmisor.data_8b_1[7:0]
+@28
+PHY_TESTBENCH.phy_module.transmisor.valid_0
+PHY_TESTBENCH.phy_module.transmisor.valid_1
+[color] 4
+PHY_TESTBENCH.phy_module.transmisor.data_out_0
+[color] 4
+PHY_TESTBENCH.phy_module.transmisor.data_out_1
+@200
+-RX
+@28
+PHY_TESTBENCH.phy_module.receptor.data_in_0
+PHY_TESTBENCH.phy_module.receptor.data_in_1
+@22
+PHY_TESTBENCH.phy_module.receptor.data_8b_0[7:0]
+PHY_TESTBENCH.phy_module.receptor.data_8b_1[7:0]
+@28
+PHY_TESTBENCH.phy_module.receptor.valid_8b_0
+PHY_TESTBENCH.phy_module.receptor.valid_8b_1
+@22
+PHY_TESTBENCH.phy_module.receptor.data_32b_0[31:0]
+PHY_TESTBENCH.phy_module.receptor.data_32b_1[31:0]
+@28
+PHY_TESTBENCH.phy_module.receptor.valid_32b_0
+PHY_TESTBENCH.phy_module.receptor.valid_32b_1
+@22
+PHY_TESTBENCH.phy_module.receptor.data_out[31:0]
+@28
+PHY_TESTBENCH.phy_module.receptor.valid_out
+[pattern_trace] 1
+[pattern_trace] 0
