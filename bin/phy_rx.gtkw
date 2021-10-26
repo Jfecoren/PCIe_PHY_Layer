@@ -1,0 +1,56 @@
+[*]
+[*] GTKWave Analyzer v3.3.103 (w)1999-2019 BSI
+[*] Tue Oct 26 03:07:15 2021
+[*]
+[dumpfile] "/home/coren/Documents/Verilog/PCIe_PHY_Layer/phy_rx.vcd"
+[dumpfile_mtime] "Tue Oct 26 03:04:14 2021"
+[dumpfile_size] 31502
+[savefile] "/home/coren/Documents/Verilog/PCIe_PHY_Layer/bin/phy_rx.gtkw"
+[timestart] 0
+[size] 1368 836
+[pos] -51 -51
+*-8.017451 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
+[treeopen] RX_TESTBENCH.
+[sst_width] 233
+[signals_width] 158
+[sst_expanded] 1
+[sst_vpaned_height] 226
+@200
+-Clocks
+@28
+RX_TESTBENCH.rx0.clk_32f
+RX_TESTBENCH.rx0.clk_4f
+RX_TESTBENCH.rx0.clk_2f
+RX_TESTBENCH.rx0.clk_f
+@200
+-Inputs
+@28
+RX_TESTBENCH.rx0.data_in_0
+RX_TESTBENCH.rx0.data_in_1
+RX_TESTBENCH.rx0.reset
+@200
+-Serial2Parallel
+@22
+RX_TESTBENCH.rx0.data_8b_0[7:0]
+RX_TESTBENCH.rx0.data_8b_1[7:0]
+@28
+RX_TESTBENCH.rx0.valid_8b_0
+RX_TESTBENCH.rx0.valid_8b_1
+@200
+-Demux 8:32
+@22
+RX_TESTBENCH.rx0.data_32b_0[31:0]
+RX_TESTBENCH.rx0.data_32b_1[31:0]
+@28
+RX_TESTBENCH.rx0.valid_32b_0
+RX_TESTBENCH.rx0.valid_32b_1
+RX_TESTBENCH.rx0.sincronizar_bus
+RX_TESTBENCH.rx0.bus_sinc
+@200
+-Outputs
+@22
+RX_TESTBENCH.rx0.data_out[31:0]
+@28
+RX_TESTBENCH.rx0.valid_out
+[pattern_trace] 1
+[pattern_trace] 0

@@ -12,35 +12,42 @@ module RX_TESTER(data_out, valid_out, data_in_0, data_in_1, reset, reset_clk, cl
     $dumpfile("phy_rx.vcd");
     $dumpvars;
     {reset, reset_clk, sincout} = 0;
-	#16 reset_clk = 1;
-	#32 reset = 1;
-	
+	#4 reset_clk = 1;
+	#64 reset = 1;
 	// HEX BC to enable reception 
 	repeat (4)
 		begin
 			@(posedge clk_32f)
 				data_in_0 <= 1;
+			@(negedge clk_32f)
       			delay0 <= 1;
 			@(posedge clk_32f)
 				data_in_0 <= 0;
+			@(negedge clk_32f)
       			delay0 <= 0;
 			@(posedge clk_32f)
 				data_in_0 <= 1;
+			@(negedge clk_32f)
       			delay0 <= 1;
 			@(posedge clk_32f)
 				data_in_0 <= 1;
+			@(negedge clk_32f)
       			delay0 <= 1;
 			@(posedge clk_32f)
 				data_in_0 <= 1;
+			@(negedge clk_32f)
       			delay0 <= 1;
 			@(posedge clk_32f)
 				data_in_0 <= 1;
+			@(negedge clk_32f)
       			delay0 <= 1;
 			@(posedge clk_32f)
 				data_in_0 <= 0;
+			@(negedge clk_32f)
       			delay0 <= 0;
 			@(posedge clk_32f)
 				data_in_0 <= 0;
+			@(negedge clk_32f)
       			delay0 <= 0;
 		end
 	
@@ -48,45 +55,57 @@ module RX_TESTER(data_out, valid_out, data_in_0, data_in_1, reset, reset_clk, cl
 			begin
 				@(posedge clk_32f)
 					data_in_0 <= 1;	// AA
+				@(negedge clk_32f)
           			delay0 <= 0;	// 66
 				@(posedge clk_32f)
 					data_in_0 <= 0;
+				@(negedge clk_32f)
           			delay0 <= 1;
 				@(posedge clk_32f)
 					data_in_0 <= 1;
+				@(negedge clk_32f)
           			delay0 <= 1;
 				@(posedge clk_32f)
 					data_in_0 <= 0;
+				@(negedge clk_32f)
           			delay0 <= 0;
 			end
 	repeat (4)
 			begin
 				@(posedge clk_32f)
 					data_in_0 <= 0;	//55
+				@(negedge clk_32f)
           			delay0 <= 1; //DD
 				@(posedge clk_32f)
 					data_in_0 <= 1;
+				@(negedge clk_32f)
           			delay0 <= 1;
 				@(posedge clk_32f)
 					data_in_0 <= 1;
+				@(negedge clk_32f)
           			delay0 <= 0;
 				@(posedge clk_32f)
 					data_in_0 <= 1;
+				@(negedge clk_32f)
           			delay0 <= 1;
 			end
 	repeat (4)
 			begin
 				@(posedge clk_32f)
 					data_in_0 <= 0;	//66
+				@(negedge clk_32f)
           			delay0 <= 0;	//33
 				@(posedge clk_32f)
 					data_in_0 <= 1;
+				@(negedge clk_32f)
           			delay0 <= 0;
 				@(posedge clk_32f)
 					data_in_0 <= 1;
+				@(negedge clk_32f)
           			delay0 <= 1;
 				@(posedge clk_32f)
 					data_in_0 <= 0;
+				@(negedge clk_32f)
           			delay0 <= 1;
 			end
 			// After Long Delay //00//FF

@@ -1,0 +1,38 @@
+[*]
+[*] GTKWave Analyzer v3.3.103 (w)1999-2019 BSI
+[*] Tue Oct 26 02:44:13 2021
+[*]
+[dumpfile] "/home/coren/Documents/Verilog/PCIe_PHY_Layer/phy_tx.vcd"
+[dumpfile_mtime] "Tue Oct 26 02:42:51 2021"
+[dumpfile_size] 48386
+[savefile] "/home/coren/Documents/Verilog/PCIe_PHY_Layer/bin/phy_tx.gtkw"
+[timestart] 0
+[size] 1368 836
+[pos] -51 -51
+*-5.817989 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
+[sst_width] 233
+[signals_width] 142
+[sst_expanded] 1
+[sst_vpaned_height] 226
+@200
+-Clocks
+@28
+TX_TESTBENCH.clk_f
+TX_TESTBENCH.clk_2f
+TX_TESTBENCH.clk_4f
+TX_TESTBENCH.clk_32f
+@200
+-Inputs
+@22
+TX_TESTBENCH.data_in[31:0]
+@28
+TX_TESTBENCH.valid_in
+TX_TESTBENCH.reset_clk
+TX_TESTBENCH.reset
+@200
+-Outputs
+@28
+TX_TESTBENCH.data_out_0
+TX_TESTBENCH.data_out_1
+[pattern_trace] 1
+[pattern_trace] 0

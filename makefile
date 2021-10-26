@@ -11,47 +11,47 @@ all: phy
 	@echo "type make then tab tab to see targets..."
 
 # PHY / PHY_TX / PHY_RX Modules
-phy: dirs
+phy: dirs #synt_phy
 	$(CC) -o $(BIN_DIR)/phy.o $(TST_DIR)/phy_testbench.v $(VFLAGS)
 	vvp $(BIN_DIR)/phy.o
 	gtkwave phy.vcd
-phytx: dirs
+phytx: dirs #synt_phyx
 	$(CC) -o $(BIN_DIR)/phy_tx.o $(TST_DIR)/phy_tx_testbench.v $(VFLAGS)
 	vvp $(BIN_DIR)/phy_tx.o
 	gtkwave phy_tx.vcd
-phyrx: dirs
+phyrx: dirs #synt_phyx
 	$(CC) -o $(BIN_DIR)/phy_rx.o $(TST_DIR)/phy_rx_testbench.v $(VFLAGS)
 	vvp $(BIN_DIR)/phy_rx.o
 	gtkwave phy_rx.vcd
 # Open de final gtkwave signals file to be visualized
-reload:
+reload: 
 	$(CC) -o $(BIN_DIR)/phy.o $(TST_DIR)/phy_testbench.v $(VFLAGS)
 	vvp $(BIN_DIR)/phy.o
 	gtkwave $(BIN_DIR)/phy.gtkw
 
 # Submodules
 # Byte Striping & Unstriping
-bytesus: dirs
+bytesus: dirs synt_byte
 	$(CC) -o $(BIN_DIR)/byte_sus.o $(TST_DIR)/byte_sus_testbench.v $(VFLAGS)
 	vvp $(BIN_DIR)/byte_sus.o
 	gtkwave byte_sus.vcd
 # Mux 32-8
-m32_8s: dirs
+m32_8s: dirs synt_dem
 	$(CC) -o $(BIN_DIR)/m32_8.o $(TST_DIR)/32_8b_testbench.v $(VFLAGS)
 	vvp $(BIN_DIR)/m32_8.o
 	gtkwave m32_8.vcd
 # Demux 8-32
-m8_32s: dirs
+m8_32s: dirs synt_dem
 	$(CC) -o $(BIN_DIR)/m8_32.o $(TST_DIR)/8_32b_testbench.v $(VFLAGS)
 	vvp $(BIN_DIR)/m8_32.o
 	gtkwave m8_32.vcd
 # Bus Parallel to Serial
-bus_ps:
+bus_ps: synt_bus
 	$(CC) -o $(BIN_DIR)/parallel_serial.o $(TST_DIR)/parallel_serial_testbench.v $(VFLAGS)
 	vvp $(BIN_DIR)/parallel_serial.o
 	gtkwave parallel_serial.vcd
 # Bus Serial to Parallel
-bus_sp:
+bus_sp: synt_bus
 	$(CC) -o $(BIN_DIR)/serial_parallel.o $(TST_DIR)/serial_parallel_testbench.v $(VFLAGS)
 	vvp $(BIN_DIR)/serial_parallel.o
 	gtkwave serial_parallel.vcd
@@ -63,7 +63,7 @@ clock:
 	vvp $(BIN_DIR)/clk_gen.o
 	gtkwave clk_gen.vcd
 
-# Yosys files to synthetize estructural descriptions
+# Yosys files: synthesis/estructural descriptions
 
 # PHY Module
 synt_phy:
@@ -77,7 +77,7 @@ synt_byte:
 	sed -i 's/BYTE_STRIPING/STRIPING_SYNTH/g' $(SYN_DIR)/striping_synth.v
 	sed -i 's/BYTE_UNSTRIPING/UNSTRIPING_SYNTH/g' $(SYN_DIR)/unstriping_synth.v
 # Mux & Demux subsubmodules
-synt_conv:
+synt_dem:
 	yosys -s $(SYN_DIR)/synth_modules_conv.ys
 	sed -i 's/m32_8(/m32_8_synth(/g' $(SYN_DIR)/m32_8_synth.v
 	sed -i 's/m8_32(/m8_32_synth(/g' $(SYN_DIR)/m8_32_synth.v
@@ -90,6 +90,7 @@ synt_bus:
 # If BIN folder does not exist, create it
 dirs:
 	mkdir -p $(BIN_DIR)
+	mkdir -p $(SYN_DIR)
 # Usual clean targets
 clean:
 	rm -rf *.o *.vcd
