@@ -2,7 +2,7 @@
 
 (* top =  1  *)
 (* src = "lib/clk_gen.v:8" *)
-module clk_gen(clk_f, clk_2f, clk_4f, clk_32f, reset);
+module clk_gen(clk_f, clk_2f, clk_4f, clk_32f, reset_clk);
   (* src = "lib/clk_gen.v:9" *)
   output clk_2f;
   (* src = "lib/clk_gen.v:11" *)
@@ -14,7 +14,7 @@ module clk_gen(clk_f, clk_2f, clk_4f, clk_32f, reset);
   (* src = "lib/clk_gen.v:14" *)
   wire q2;
   (* src = "lib/clk_gen.v:12" *)
-  input reset;
+  input reset_clk;
   assign clk_2f = 1'h0;
   assign clk_4f = 1'h0;
   assign clk_f = 1'h0;

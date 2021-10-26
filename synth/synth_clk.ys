@@ -1,5 +1,5 @@
 # Clock Generator Module Synthesis
-read_verilog lib/clk_gen.v
+read_verilog -I lib lib/clk_gen.v
 hierarchy -check -top clk_gen
 proc; opt; fsm; opt; memory; opt
 techmap; opt
